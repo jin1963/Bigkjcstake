@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KJC Big Stake</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f1115;color:#e9e9ee;margin:0}
+    header{padding:20px;border-bottom:1px solid #2a2f3a}
+    .wrap{max-width:920px;margin:0 auto;padding:16px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:#151922;border:1px solid #2a2f3a;border-radius:12px;padding:16px;flex:1}
+    h1{font-size:22px;margin:0}
+    .muted{opacity:.7}
+    input,select,button{font-size:16px;border-radius:10px;border:1px solid #303649;background:#0f131b;color:#e9e9ee;padding:10px}
+    input,select{width:100%}
+    button{background:#ffd84d;color:#111;border:none;font-weight:700;cursor:pointer}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#1b2130;border:1px solid #2d3444}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .stake{border:1px dashed #394257;border-radius:10px;padding:12px}
+    .small{font-size:14px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap row" style="align-items:center;justify-content:space-between">
+      <h1>🧱 KJC Big Stake</h1>
+      <div>
+        <button id="connectBtn">เชื่อมต่อกระเป๋า</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="row">
+      <div class="card">
+        <div class="small muted">Contract:</div>
+        <div class="mono" id="contractAddr">-</div>
+        <div class="grid" style="margin-top:12px">
+          <div class="pill">เครือข่าย: BSC (0x38)</div>
+          <div class="pill">บัญชี: <span id="acct" class="mono">ยังไม่เชื่อมต่อ</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:12px">
+      <div class="card">
+        <h3>พารามิเตอร์</h3>
+        <div>APR (bps): <span class="mono" id="apr">-</span></div>
+        <div>CLAIM_INTERVAL (วินาที): <span class="mono" id="ci">-</span> <span class="muted small" id="ciHuman"></span></div>
+      </div>
+      <div class="card">
+        <h3>ยอดคงเหลือ</h3>
+        <div>KJC ของคุณ: <span id="bal" class="mono">-</span></div>
+        <div>Allowance ให้สัญญา: <span id="allow" class="mono">-</span></div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:12px">
+      <div class="card">
+        <h3>Stake</h3>
+        <div class="grid">
+          <div>
+            <div class="small muted">จำนวน KJC</div>
+            <input id="amt" placeholder="เช่น 300000" inputmode="decimal">
+          </div>
+          <div>
+            <div class="small muted">Lock (วัน)</div>
+            <select id="lockDays">
+              <option value="90">90 วัน</option>
+              <option value="180" selected>180 วัน</option>
+              <option value="365">365 วัน</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button id="approveBtn">Approve</button>
+          <button id="stakeBtn">Stake</button>
+        </div>
+        <div class="small muted" style="margin-top:8px">
+          * ถ้า Approved ไม่พอ ระบบจะขออนุมัติให้ก่อน แล้วกด Stake อีกครั้ง
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:12px">
+      <div class="card">
+        <h3>รายการ Stake ของคุณ</h3>
+        <div id="list" class="grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- libs & app -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="abi.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

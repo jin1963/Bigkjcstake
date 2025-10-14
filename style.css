@@ -1,0 +1,23 @@
+:root{
+  --bg:#0f1115; --card:#171a21; --text:#eaeef5; --muted:#9aa4b2;
+  --accent:#ffd000; --accent2:#00d084; --danger:#ff6b6b; --mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+.wrap{max-width:860px;margin:24px auto;padding:0 16px}
+h1{margin:0 0 8px}
+h2{margin:0 0 12px}
+header{margin-bottom:12px}
+.card{background:var(--card);border:1px solid #252a35;border-radius:12px;padding:16px;margin:14px 0}
+.topbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mt8{margin-top:8px}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+input, select{background:#0c0e13;border:1px solid #2a3040;border-radius:10px;padding:10px 12px;color:var(--text);outline:none}
+button{background:var(--accent);border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+button:hover{filter:brightness(1.05)}
+#btnClaim{background:var(--accent2)}
+#btnWithdraw{background:#ffc36b}
+.toast{position:fixed;right:16px;bottom:16px;background:#222b3a;color:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
